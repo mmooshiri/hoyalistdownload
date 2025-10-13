@@ -1,0 +1,8 @@
+{
+  "root": ".",
+  "https_only": true,
+  "clean_urls": true,
+  "routes": {
+    "/download": "download/index.html"
+  }
+}
