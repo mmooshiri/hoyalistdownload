@@ -14,4 +14,7 @@ app.get('/download', (_req, res) => {
 app.get('/healthz', (_req, res) => res.status(200).send('ok'));
 
 const PORT = process.env.PORT || 3000;
+app.get('/', (_req, res) => {
+  res.redirect('/download');
+});
 app.listen(PORT, () => console.log(`HoyaList download server on ${PORT}`));
