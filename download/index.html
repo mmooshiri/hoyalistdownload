@@ -11,6 +11,7 @@
     } else if (/iPad|iPhone|iPod/.test(ua) && !window.MSStream) {
       window.location.href = "https://apps.apple.com/us/app/hoyalist/id6740706168";
     } else {
+      // Desktop → send to homepage (NOT back to /download)
       window.location.href = "https://hoyalistapp.com";
     }
   </script>
@@ -19,4 +20,3 @@
   <p>Redirecting you to the right app store…</p>
 </body>
 </html>
-

@@ -2,10 +2,10 @@ const express = require('express');
 const path = require('path');
 const app = express();
 
-// Serve everything in the repo (so /download/index.html is available)
+// Serve static files from repo root (so /index.html and /download/index.html work)
 app.use(express.static(__dirname, { extensions: ['html'] }));
 
-// Explicit route for /download -> serve the HTML redirect page
+// Explicit route for /download (optional but fine)
 app.get('/download', (_req, res) => {
   res.sendFile(path.join(__dirname, 'download', 'index.html'));
 });
@@ -14,7 +14,4 @@ app.get('/download', (_req, res) => {
 app.get('/healthz', (_req, res) => res.status(200).send('ok'));
 
 const PORT = process.env.PORT || 3000;
-app.get('/', (_req, res) => {
-  res.redirect('/download');
-});
-app.listen(PORT, () => console.log(`HoyaList download server on ${PORT}`));
+app.listen(PORT, () => console.log(`HoyaList server on ${PORT}`));
