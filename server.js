@@ -179,10 +179,9 @@ app.get(['/go', '/go/'], (req, res) => {
     );
   }
 
-  return res.redirect(
-    302,
-    'https://hoyalistapp.com'
-  );
+   return res.sendFile(
+  __dirname + '/index.html'
+);
 });
 
 // -------------------------------------------
