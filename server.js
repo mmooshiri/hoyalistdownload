@@ -123,17 +123,24 @@ app.get(['/go', '/go/'], (req, res) => {
   const PKG =
     'com.hoyalist.hoyalist';
 
-  const AND_HTTPS =
-    `https://play.google.com/store/apps/details?id=${PKG}`;
+  const installReferrer = projectID
+  ? `projectID=${encodeURIComponent(projectID)}&signupSource=project_link`
+  : '';
 
+const referrerParam = installReferrer
+  ? `&referrer=${encodeURIComponent(installReferrer)}`
+  : '';
+
+const AND_HTTPS =
+  `https://play.google.com/store/apps/details?id=${PKG}${referrerParam}`;
   const IOS_HTTPS =
     'https://apps.apple.com/us/app/hoyalist/id6740706168';
 
   const AND_INTENT =
-    `intent://details?id=${PKG}` +
-    `#Intent;scheme=market;` +
-    `package=com.android.vending;` +
-    `S.browser_fallback_url=${encodeURIComponent(AND_HTTPS)};end;`;
+  `intent://details?id=${PKG}${referrerParam}` +
+  `#Intent;scheme=market;` +
+  `package=com.android.vending;` +
+  `S.browser_fallback_url=${encodeURIComponent(AND_HTTPS)};end;`;
 
   const IOS_ITMS =
     'itms-apps://itunes.apple.com/app/id6740706168';
